@@ -4,7 +4,7 @@ import sys
 
 pygame.init()
 
-WIDTH = 600 #size of window
+WIDTH = 600  # size of window
 HEIGHT = WIDTH
 LINE_WIDTH = 15
 BOARD_ROWS = 3
@@ -26,7 +26,8 @@ screen.fill(BACKGROUND_COLOR)
 # board
 board = numpy.zeros((BOARD_ROWS, BOARD_COLS))
 
-#drawing figures
+
+# drawing figures
 def draw_figures():
     for row in range(BOARD_ROWS):
         for col in range(BOARD_COLS):
@@ -49,7 +50,8 @@ def draw_figures():
                                  (col * SQUARE_SIZE + SQUARE_SIZE - SPACE, row * SQUARE_SIZE + SQUARE_SIZE - SPACE),
                                  CROSS_WIDTH)
 
-#drawing lines
+
+# drawing lines
 def draw_lines():
     # 1 horizontal
     pygame.draw.line(screen, LINE_COLOR, (0, SQUARE_SIZE), (HEIGHT, SQUARE_SIZE), LINE_WIDTH)
@@ -61,15 +63,18 @@ def draw_lines():
     # 2 vertical
     pygame.draw.line(screen, LINE_COLOR, (2 * SQUARE_SIZE, 0), (2 * SQUARE_SIZE, HEIGHT), LINE_WIDTH)
 
-#marking square
+
+# marking square
 def mark_square(row, col, player):
     board[row][col] = player
 
-#avaliable check
+
+# avaliable check
 def available_square(row, col):
     return board[row][col] == 0
 
-#full board check
+
+# full board check
 def is_board_full():
     for row in range(BOARD_ROWS):
         for col in range(BOARD_COLS):
@@ -78,7 +83,8 @@ def is_board_full():
 
     return True
 
-#winning check
+
+# winning check
 def check_win(player):
     # vertical win check
     for col in range(BOARD_COLS):
@@ -103,7 +109,8 @@ def check_win(player):
 
     return False
 
-#drawing lines after one player win
+
+# drawing lines after one player win
 def draw_vertical_winning_line(col, player):
     pos_x = col * SQUARE_SIZE + SQUARE_SIZE // 2
 
@@ -139,7 +146,8 @@ def draw_right_diagonal_line(player):
                      (WIDTH - 15, HEIGHT - 15),
                      15)
 
-#drawing new game
+
+# drawing new game
 def restart():
     screen.fill(BACKGROUND_COLOR)
     draw_lines()
